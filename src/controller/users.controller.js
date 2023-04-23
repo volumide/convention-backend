@@ -1,4 +1,3 @@
-import expectationModel from "../schemas/experience.schema.js"
 import userModel from "../schemas/users.schema.js"
 
 export const saveUser = async (req, res) => {
@@ -19,19 +18,10 @@ export const updateUser = async (req, res) => {
   }
 }
 
-export const gettAllUsers = async (req, res) => {
+export const getUsers = async (req, res) => {
   try {
     const allUsers = await userModel.find()
     return res.staus(200).json({ data: allUsers, message: "success" })
-  } catch (error) {
-    console.log(error)
-  }
-}
-
-export const getAllexperince = async (req, res) => {
-  try {
-    const expectations = await expectationModel.find()
-    return res.staus(200).json({ data: expectations, message: "success" })
   } catch (error) {
     console.log(error)
   }
