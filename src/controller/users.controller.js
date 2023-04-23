@@ -2,8 +2,17 @@ import userModel from "../schemas/users.schema.js"
 
 export const saveUser = async (req, res) => {
   try {
+    const findUser = await userModel.findOne({ email: req.body.email })
+
+    if (findUser)
+      return res.status(409).json({
+        message: "fail",
+        data: {
+          error: "user already exist"
+        }
+      })
     const sendData = await userModel.create(req.body)
-    return res.staus(200).json({ data: sendData, message: "success" })
+    return res.status(200).json({ data: sendData, message: "success" })
   } catch (err) {
     console.log(err)
   }
@@ -12,7 +21,7 @@ export const saveUser = async (req, res) => {
 export const updateUser = async (req, res) => {
   try {
     const updateUser = await userModel.findByIdAndUpdate(req.params.id, req.body, { new: true })
-    return res.staus(200).json({ data: updateUser, message: "success" })
+    return res.status(200).json({ data: updateUser, message: "success" })
   } catch (error) {
     console.log(error)
   }
@@ -21,7 +30,7 @@ export const updateUser = async (req, res) => {
 export const getUsers = async (req, res) => {
   try {
     const allUsers = await userModel.find()
-    return res.staus(200).json({ data: allUsers, message: "success" })
+    return res.status(200).json({ data: allUsers, message: "success" })
   } catch (error) {
     console.log(error)
   }
