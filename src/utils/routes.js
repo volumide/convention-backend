@@ -1,8 +1,9 @@
-import { getUsers, saveUser, updateUser } from "../controller/users.controller.js"
+import { getUser, getUsers, saveUser, updateUser } from "../controller/users.controller.js"
 
 const router = (app) => {
   app.post("/register", saveUser)
   app.put("/register/:id", updateUser)
+  app.get("/register/:id", getUser)
   app.get("/register", getUsers)
 }
 

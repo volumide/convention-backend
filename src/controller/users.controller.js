@@ -3,7 +3,6 @@ import userModel from "../schemas/users.schema.js"
 export const saveUser = async (req, res) => {
   try {
     const findUser = await userModel.findOne({ email: req.body.email })
-
     if (findUser)
       return res.status(409).json({
         message: "fail",
@@ -31,6 +30,15 @@ export const getUsers = async (req, res) => {
   try {
     const allUsers = await userModel.find()
     return res.status(200).json({ data: allUsers, message: "success" })
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+export const getUser = async (req, res) => {
+  try {
+    const user = await userModel.findById(req.params.id)
+    return res.status(200).json({ data: user, message: "success" })
   } catch (error) {
     console.log(error)
   }
