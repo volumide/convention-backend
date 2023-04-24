@@ -7,6 +7,7 @@ const schema = mongoose.Schema({
   contact: String,
   gender: String,
   class: String,
+  present: { type: String, default: false },
   expectation: String
 })
 
