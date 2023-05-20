@@ -4,7 +4,7 @@ export const saveUser = async (req, res) => {
   try {
     console.log(req.body)
     const findUser = await userModel.findOne({ email: req.body.email })
-    console.log(findUser)
+
     if (findUser)
       return res.status(409).json({
         message: "fail",
