@@ -3,8 +3,8 @@ import { getUser, getUsers, saveUser, updateUser } from "../controller/users.con
 const router = (app) => {
   app.post("/register", saveUser)
   app.put("/register/:id", updateUser)
-  app.get("/register/:id", getUser)
-  app.get("/register", getUsers)
+  app.get("/member/:id", getUser)
+  app.get("/members", getUsers)
 }
 
 export default router
