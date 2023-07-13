@@ -8,8 +8,9 @@ const schema = mongoose.Schema({
   gender: String,
   class: String,
   present: { type: String, default: false },
-  expectation: String
+  expectation: String,
+  created_at: Date
 })
 
-const userModel = mongoose.model("Users", schema)
+const userModel = mongoose.model("users", schema)
 export default userModel

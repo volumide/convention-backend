@@ -2,7 +2,7 @@ import userModel from "../schemas/users.schema.js"
 
 export const saveUser = async (req, res) => {
   try {
-    console.log(req.body)
+    req.body["created_at"] = new Date()
     const findUser = await userModel.findOne({ email: req.body.email })
 
     if (findUser)
